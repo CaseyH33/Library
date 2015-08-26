@@ -43,7 +43,6 @@
       {
           $GLOBALS['DB']->exec("DELETE FROM books WHERE id = {$this->getId()};");
           $GLOBALS['DB']->exec("DELETE FROM authors_books WHERE book_id = {$this->getId()};");
-
       }
 
       static function getAll()

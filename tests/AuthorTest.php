@@ -67,6 +67,46 @@
             $this->assertEquals($test_author, $result[0]);
         }
 
+        function testFind()
+        {
+            $name = "Stephen King";
+            $test_author = new Author($name);
+            $test_author->save();
 
+            $name2 = "Neal Stephenson";
+            $test_author2 = new Author($name2);
+            $test_author2->save();
+
+            $result = Author::find($test_author->getId());
+
+            $this->assertEquals($result,$test_author);
+        }
+
+        function testUpdate()
+        {
+            $name = "Stephen King";
+            $test_author = new Author($name);
+            $test_author->save();
+
+            $new_name = "Neal Stephenson";
+            $test_author->update($new_name);
+
+            $this->assertEquals($new_name,$test_author->getName());
+        }
+
+        function testDelete()
+        {
+            $name = "Stephen King";
+            $test_author = new Author($name);
+            $test_author->save();
+
+            $name2 = "Neal Stephenson";
+            $test_author2 = new Author($name2);
+            $test_author2->save();
+
+            $test_author->delete();
+
+            $this->assertEquals([$test_author2], Author::getAll());
+        }
     }
 ?>
