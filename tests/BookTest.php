@@ -37,7 +37,33 @@
 
             $result = $test_book->getId();
 
-            $this->assertEquals(null, $result);    
+            $this->assertEquals(null, $result);
+        }
+
+        function testGetAll()
+        {
+            $title = "Anathem";
+            $test_book = new Book($title);
+            $test_book->save();
+
+            $title2 = "Snow Crash";
+            $test_book2 = new Book($title2);
+            $test_book2->save();
+
+            $result = Book::getAll();
+
+            $this->assertEquals([$test_book, $test_book2], $result);
+        }
+
+        function testSave()
+        {
+            $title = "Anathem";
+            $test_book = new Book($title);
+            $test_book->save();
+
+            $result = Book::getAll();
+
+            $this->assertEquals($test_book, $result[0]);
         }
     }
 
