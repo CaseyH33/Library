@@ -41,6 +41,32 @@
             $this->assertEquals(null, $result);
         }
 
+        function testGetAll()
+        {
+            $name = "Stephen King";
+            $test_author = new Author($name);
+            $test_author->save();
+
+            $name2 = "Neal Stephenson";
+            $test_author2 = new Author($name2);
+            $test_author2->save();
+
+            $result = Author::getAll();
+
+            $this->assertEquals([$test_author2, $test_author], $result);
+        }
+
+        function testSave()
+        {
+            $name = "Stephen King";
+            $test_author = new Author($name);
+            $test_author->save();
+
+            $result = Author::getAll();
+
+            $this->assertEquals($test_author, $result[0]);
+        }
+
 
     }
 ?>

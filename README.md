@@ -41,6 +41,8 @@ _This project makes use of PHP, the testing framework [PHPUnit](https://phpunit.
 
 ## To Do
 
+Sorting by last name?
+RIGHT(p.name, LOCATE(' ', REVERSE(p.name)) - 1)
 
 
 ### Legal
