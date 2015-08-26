@@ -17,6 +17,7 @@
 
         protected function tearDown()
         {
+            Author::deleteAll();
             Book::deleteAll();
         }
 
@@ -108,6 +109,7 @@
 
             $this->assertEquals([$test_book2], Book::getAll());
         }
+
 
     }//end class
 
