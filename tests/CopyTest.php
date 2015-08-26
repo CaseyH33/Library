@@ -97,5 +97,20 @@
             $this->assertEquals([$test_copy2], Copy::getAll());
         }
 
+        function testGetBook()
+        {
+            $title = "Carrie";
+            $test_book = new Book($title);
+            $test_book->save();
+
+            $book_id = $test_book->getId();;
+            $test_copy = new Copy($book_id);
+            $test_copy->save();
+
+            $result = $test_copy->getBook();
+
+            $this->assertEquals($test_book, $result);
+        }
+
     }
 ?>

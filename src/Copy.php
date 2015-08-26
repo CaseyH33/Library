@@ -33,6 +33,19 @@
             //Delete from checkouts?
         }
 
+
+        //Returns the book object this copy is associated with
+        function getBook()
+        {
+            $query = $GLOBALS['DB']->query("SELECT * FROM books_t WHERE id = {$this->getBookId()};");
+            $returned_book = $query->fetchAll(PDO::FETCH_ASSOC);
+
+            $title = $returned_book[0]['title'];
+            $id = $returned_book[0]['id'];
+            $new_book = new Book($title, $id);
+            return $new_book;
+        }
+
         static function getAll()
         {
             $returned_copies = $GLOBALS['DB']->query("SELECT * FROM copies_t;");
