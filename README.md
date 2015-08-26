@@ -1,13 +1,11 @@
 ##
-# Silex Twig Template
+# Library App
 
-##### _Template for getting up and going with a Silex/Twig app._
+##### _An app for a librarian to organize books, patrons, and the checkout process._
 
-#### Mike Chastain
+#### AUTHORS:
+_Mike Chastain & Casey Heitz_
 
-## Description
-
-_Add a Description Here_
 
 ## Setup
 
@@ -16,12 +14,30 @@ Add your setup information instructions here.
 ```
 $ composer install
 ```
+To build database from scratch (in terminal):
+```
+>mysql.server start
+>mysql -uroot -proot
+```
 
+In MySQL:
+
+```
+CREATE DATABASE library;
+
+USE library;
+
+CREATE TABLE books (title VARCHAR(255), id serial PRIMARY KEY);
+
+CREATE TABLE authors (name VARCHAR(255), id serial PRIMARY KEY);
+
+CREATE TABLE authors_books (author_id int, book_id int, id serial PRIMARY KEY);
+```
 _then start up a local PHP server from within the "web" directory within the project's folder and point your browser to whatever local host server you have created._  
 
 ## Technologies Used
 
-_This project makes use of PHP, the testing framework [PHPUnit](https://phpunit.de/), the micro-framework [Silex](http://silex.sensiolabs.org/), and uses [Twig](http://twig.sensiolabs.org/) templates._
+_This project makes use of PHP, the testing framework [PHPUnit](https://phpunit.de/), the micro-framework [Silex](http://silex.sensiolabs.org/), and uses [Twig](http://twig.sensiolabs.org/) templates. and mysql_
 
 ## To Do
 
@@ -31,7 +47,7 @@ _This project makes use of PHP, the testing framework [PHPUnit](https://phpunit.
 
 
 
-Copyright (c) 2015 Mike Chastain
+Copyright (c) 2015 Mike Chastain and Casey Heitz
 
 This software is licensed under the MIT license.
 
