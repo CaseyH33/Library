@@ -65,6 +65,21 @@
 
             $this->assertEquals($test_book, $result[0]);
         }
+
+        function testFind()
+        {
+            $title = "Anathem";
+            $test_book = new Book($title);
+            $test_book->save();
+
+            $title2 = "Snow Crash";
+            $test_book2 = new Book($title2);
+            $test_book2->save();
+
+            $result = Book::find($test_book->getId());
+
+            $this->assertEquals($result,$test_book);
+        }
     }
 
  ?>

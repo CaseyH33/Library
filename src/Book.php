@@ -46,6 +46,20 @@
           $GLOBALS['DB']->exec("DELETE FROM books;");
       }
 
+      static function find($search_id)
+      {
+          $found = null;
+          $books = Book::getAll();
+          foreach($books as $book){
+              $book_id = $book->getId();
+              if($book_id == $search_id){
+                  $found = $book;
+              }
+
+          }//end foreach
+          return $found;
+      }
+
   }
 
 
