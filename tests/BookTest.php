@@ -27,7 +27,17 @@
 
             $result = $test_book->getTitle();
 
-            $this->assertEquals($title, $result);    
+            $this->assertEquals($title, $result);
+        }
+
+        function testGetId()
+        {
+            $title = "Anathem";
+            $test_book = new Book($title);
+
+            $result = $test_book->getId();
+
+            $this->assertEquals(null, $result);    
         }
     }
 

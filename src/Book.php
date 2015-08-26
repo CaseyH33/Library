@@ -17,6 +17,11 @@
           return $this->title;
       }
 
+      function getId()
+      {
+          return $this->id;
+      }
+
       static function deleteAll()
       {
           $GLOBALS['DB']->exec("DELETE FROM books;");
