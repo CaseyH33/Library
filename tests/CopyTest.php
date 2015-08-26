@@ -41,5 +41,31 @@
             $this->assertEquals(null, $result);
         }
 
+        function testGetAll()
+        {
+            $book_id = 1;
+            $test_copy = new Copy($book_id);
+            $test_copy->save();
+
+            $book_id2 = 2;
+            $test_copy2 = new Copy($book_id2);
+            $test_copy2->save();
+
+            $result = Copy::getAll();
+
+            $this->assertEquals([$test_copy, $test_copy2], $result);
+        }
+
+        function testSave()
+        {
+            $book_id = 1;
+            $test_copy = new Copy($book_id);
+            $test_copy->save();
+
+            $result = Copy::getAll();
+
+            $this->assertEquals($test_copy, $result[0]);
+        }
+
     }
 ?>
