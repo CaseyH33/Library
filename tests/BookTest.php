@@ -80,6 +80,35 @@
 
             $this->assertEquals($result,$test_book);
         }
-    }
+
+        function testUpdate()
+        {
+            $title = "Anathem";
+            $test_book = new Book($title);
+            $test_book->save();
+
+            $new_title = "crypotnomicon";
+            $test_book->update($new_title);
+
+            $this->assertEquals($new_title,$test_book->getTitle());
+
+        }
+
+        function testDelete()
+        {
+            $title = "Anathem";
+            $test_book = new Book($title);
+            $test_book->save();
+
+            $title2 = "Snow Crash";
+            $test_book2 = new Book($title2);
+            $test_book2->save();
+
+            $test_book->delete();
+
+            $this->assertEquals([$test_book2], Book::getAll());
+        }
+
+    }//end class
 
  ?>
