@@ -67,5 +67,35 @@
             $this->assertEquals($test_copy, $result[0]);
         }
 
+        function testFind()
+        {
+            $book_id = 1;
+            $test_copy = new Copy($book_id);
+            $test_copy->save();
+
+            $book_id2 = 2;
+            $test_copy2 = new Copy($book_id2);
+            $test_copy2->save();
+
+            $result = Copy::find($test_copy->getId());
+
+            $this->assertEquals($test_copy, $result);
+        }
+
+        function testDelete()
+        {
+            $book_id = 1;
+            $test_copy = new Copy($book_id);
+            $test_copy->save();
+
+            $book_id2 = 2;
+            $test_copy2 = new Copy($book_id2);
+            $test_copy2->save();
+
+            $test_copy->delete();
+
+            $this->assertEquals([$test_copy2], Copy::getAll());
+        }
+
     }
 ?>

@@ -27,6 +27,12 @@
             $this->id=$GLOBALS['DB']->lastInsertId();
         }
 
+        function delete()
+        {
+            $GLOBALS['DB']->exec("DELETE FROM copies_t WHERE id = {$this->getId()};");
+            //Delete from checkouts?
+        }
+
         static function getAll()
         {
             $returned_copies = $GLOBALS['DB']->query("SELECT * FROM copies_t;");
@@ -44,6 +50,21 @@
         {
             $GLOBALS['DB']->exec("DELETE FROM copies_t;");
         }
+
+        static function find($search_id)
+        {
+            $found = null;
+            $copies = Copy::getAll();
+            foreach($copies as $copy) {
+                $copy_id = $copy->getId();
+                if($copy_id == $search_id) {
+                    $found = $copy;
+                }
+            }
+            return $found;
+        }
+
+        //No need for update because you would never change the book_id
     }
 
 
