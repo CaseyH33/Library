@@ -1,4 +1,4 @@
-##
+
 # Library App
 
 ##### _An app for a librarian to organize books, patrons, and the checkout process._
@@ -6,13 +6,27 @@
 #### AUTHORS:
 _Mike Chastain & Casey Heitz_
 
+## To Do
+
+(Note: Tables are marked with _t for easy recoginition (eg authors_t))
+
+Add class and tests for Checkout (table checkouts_t) with properties copy_id, patron_id, due_date, checked_out, and id
+
+Add functions for interaction between Checkout and Patron, and Checkout and Copy
+
+Build Silex routes and Twig files
+
+#### Research Notes
+
+Sort by using last name instead of whole name string?
+
+* Test out: ```RIGHT(p.name, LOCATE(' ', REVERSE(p.name)) - 1)```
 
 ## Setup
 
-Add your setup information instructions here.
-
 ```
 $ composer install
+$ apachectl start
 ```
 To build database from scratch (in terminal):
 ```
@@ -20,23 +34,23 @@ To build database from scratch (in terminal):
 >mysql -uroot -proot
 ```
 
+If importing database from github, use library.sql.zip.  Else follow directions below to rebuild the database.
+
 In MySQL:
 
 ```
 CREATE DATABASE library;
 
 USE library;
-
-CREATE TABLE books (title VARCHAR(255), id serial PRIMARY KEY);
-
-CREATE TABLE authors (name VARCHAR(255), id serial PRIMARY KEY);
-
-CREATE TABLE authors_books (author_id int, book_id int, id serial PRIMARY KEY);
 ```
-_then start up a local PHP server from within the "web" directory within the project's folder and point your browser to whatever local host server you have created._  
-
 ---
-_In phpmyadmin Copy and paste the code below (from RAW) into the sql for a database named library_
+In phpmyadmin:
+* Click on library database
+* Click SQL tab
+* Copy and paste the code below (from RAW) into the window below the line "Run SQL query/queries on database library"
+* Click Go
+
+If test database is wanted to run tests, make a copy of the library database with the name 'library_test'
 
 ```
 -- ---
@@ -169,12 +183,7 @@ ALTER TABLE `checkouts_t` ADD FOREIGN KEY (patron_id) REFERENCES `patrons_t` (`i
 ```
 ## Technologies Used
 
-_This project makes use of PHP, the testing framework [PHPUnit](https://phpunit.de/), the micro-framework [Silex](http://silex.sensiolabs.org/), and uses [Twig](http://twig.sensiolabs.org/) templates. and mysql_
-
-## To Do
-
-Sorting by last name?
-RIGHT(p.name, LOCATE(' ', REVERSE(p.name)) - 1)
+_This project makes use of PHP, the testing framework [PHPUnit](https://phpunit.de/), the micro-framework [Silex](http://silex.sensiolabs.org/), uses [Twig](http://twig.sensiolabs.org/) templates, and [MySQL](https://www.mysql.com/) as the database._
 
 
 ### Legal

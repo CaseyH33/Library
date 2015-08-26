@@ -111,6 +111,21 @@
             $this->assertEquals([$test_patron2], Patron::getAll());
         }
 
+        function testAddCheckout()
+        {
+            //Need to add after building checkout
+        }
+
+        function testGetCheckoutHistory()
+        {
+            //Need to add after building checkout
+        }
+
+        function testGetCurrentCheckouts()
+        {
+            //Need to add after building checkout
+        }
+
     }
 
 

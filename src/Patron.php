@@ -44,6 +44,24 @@
           $GLOBALS['DB']->exec("DELETE FROM patrons_t WHERE id = {$this->getId()};");
       }
 
+      function addCheckout()
+      {
+          //Will add a new checkout for the patron
+          //Need to add after building checkout
+      }
+
+      function getCheckoutHistory()
+      {
+          //Will list all checkouts in this patrons history
+          //Need to add after building checkout
+      }
+
+      function getCurrentCheckouts()
+      {
+          //Will list all books currently checked out by this patron
+          //Need to add after building checkout
+      }
+
       static function getAll()
       {
           $returned_patrons = $GLOBALS['DB']->query("SELECT * FROM patrons_t ORDER BY name;");
@@ -57,24 +75,24 @@
           return $patrons;
       }
 
-          static function deleteAll()
-          {
-              $GLOBALS['DB']->exec("DELETE FROM patrons_t;");
-          }
+      static function deleteAll()
+      {
+          $GLOBALS['DB']->exec("DELETE FROM patrons_t;");
+      }
 
-          static function find($search_id)
-          {
-              $found = null;
-              $patrons = Patron::getAll();
-              foreach($patrons as $patron){
-                  $patron_id = $patron->getId();
-                  if($patron_id == $search_id){
-                      $found = $patron;
-                  }
+      static function find($search_id)
+      {
+          $found = null;
+          $patrons = Patron::getAll();
+          foreach($patrons as $patron){
+              $patron_id = $patron->getId();
+              if($patron_id == $search_id){
+                  $found = $patron;
+              }
 
-              }//end foreach
-              return $found;
-          }
+          }//end foreach
+          return $found;
+      }
 
   }
 ?>
