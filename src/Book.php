@@ -52,7 +52,8 @@
 
       function getAuthors()
       {
-          $returned_authors = $GLOBALS['DB']->query("SELECT authors_t.* FROM books_t JOIN authors_books_t
+          $returned_authors = $GLOBALS['DB']->query("SELECT authors_t.* FROM books_t
+              JOIN authors_books_t
               ON (books_t.id = authors_books_t.book_id)
               JOIN authors_t ON (authors_books_t.author_id = authors_t.id)
               WHERE books_t.id = {$this->getId()}

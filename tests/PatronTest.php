@@ -84,6 +84,33 @@
             $this->assertEquals($result,$test_patron);
         }
 
+        function testUpdate()
+        {
+            $name = "Randy Mclure";
+            $test_patron = new Patron($name);
+            $test_patron->save();
+
+            $new_name = "Neal Stephenson";
+            $test_patron->update($new_name);
+
+            $this->assertEquals($new_name,$test_patron->getName());
+        }
+
+        function testDelete()
+        {
+            $name = "Randy Mclure";
+            $test_patron = new Patron($name);
+            $test_patron->save();
+
+            $name2 = "Ballface Majure";
+            $test_patron2 = new Patron($name2);
+            $test_patron2->save();
+
+            $test_patron->delete();
+
+            $this->assertEquals([$test_patron2], Patron::getAll());
+        }
+
     }
 
 

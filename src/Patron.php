@@ -33,6 +33,17 @@
           $this->id=$GLOBALS['DB']->lastInsertId();
       }
 
+      function update($new_name)
+      {
+          $GLOBALS['DB']->exec("UPDATE patrons_t SET name = '{$new_name}' WHERE id = {$this->getId()};");
+          $this->name = $new_name;
+      }
+
+      function delete()
+      {
+          $GLOBALS['DB']->exec("DELETE FROM patrons_t WHERE id = {$this->getId()};");
+      }
+
       static function getAll()
       {
           $returned_patrons = $GLOBALS['DB']->query("SELECT * FROM patrons_t ORDER BY name;");
