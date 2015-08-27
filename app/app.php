@@ -28,14 +28,23 @@
         $title = $_POST['title'];
         $book = new Book($title, $id = null);
         $book->save();
+
         $name = $_POST['name'];
         $author = new Author($name, $id = null);
         $author->save();
+
+        $result = $author->addBook($book);
+
+
         return $app['twig']->render('index.html.twig', array('books' => Book::getAll(), 'authors' => Author::getAll()));
     });
 
-
-
+    $app->post("/delete_all", function() use ($app) {
+        $GLOBALS['DB']->exec("DELETE FROM authors_books_t;");
+        Author::deleteAll();
+        Book::deleteAll();
+        return $app['twig']->render('index.html.twig', array('authors' => Author::getAll(), 'books' => Book::getAll()));
+    });
 
 
 
